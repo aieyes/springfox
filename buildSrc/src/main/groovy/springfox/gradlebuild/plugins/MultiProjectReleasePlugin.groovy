@@ -58,7 +58,7 @@ class MultiProjectReleasePlugin implements Plugin<Project> {
     releaseTask = project.task(ReleaseTask.TASK_NAME, type: ReleaseTask)
     bumpAndTagTask = project.task(BumpAndTagTask.TASK_NAME, type: BumpAndTagTask)
     credentialCheck = project.task(CheckRequiredSecretsTask.TASK_NAME, type: CheckRequiredSecretsTask)
-    checkCleanWorkspaceTask = project.task(CheckCleanWorkspaceTask.TASK_NAME, type: CheckCleanWorkspaceTask)
+//    checkCleanWorkspaceTask = project.task(CheckCleanWorkspaceTask.TASK_NAME, type: CheckCleanWorkspaceTask)
     checkGitBranchTask = project.task(CheckGitBranchTask.TASK_NAME, type: CheckGitBranchTask)
     checkWorkspaceTask = project.task('checkWorkspace', type: IntermediaryTask)
 
@@ -71,7 +71,7 @@ class MultiProjectReleasePlugin implements Plugin<Project> {
     }
 
     configureVersion(project, versioningInfo)
-    configureGlobalTasks()
+//    configureGlobalTasks()
     configureSnapshotTaskGraph(project)
     configureReleaseTaskGraph(project)
   }
@@ -103,9 +103,9 @@ class MultiProjectReleasePlugin implements Plugin<Project> {
 
     project.afterEvaluate { evaluatedProject ->
       def javaCheckTasks = evaluatedProject.getTasksByName('check', true)
-      def bintrayUploadTasks = evaluatedProject.getTasksByName('bintrayUpload', true)
+//      def bintrayUploadTasks = evaluatedProject.getTasksByName('bintrayUpload', true)
       publishTask.dependsOn javaCheckTasks
-      publishTask.dependsOn bintrayUploadTasks
+//      publishTask.dependsOn bintrayUploadTasks
     }
     bumpAndTagTask.dependsOn publishTask
     releaseTask.dependsOn bumpAndTagTask

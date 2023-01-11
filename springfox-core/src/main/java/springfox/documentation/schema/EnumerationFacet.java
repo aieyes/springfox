@@ -5,7 +5,6 @@ import springfox.documentation.builders.EnumerationElementFacetBuilder;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 import java.util.StringJoiner;
@@ -15,7 +14,8 @@ public class EnumerationFacet implements ElementFacet {
 
   public EnumerationFacet(Collection<String> allowedValues) {
     this.allowedValues.addAll(allowedValues);
-    this.allowedValues.sort(Comparator.naturalOrder());
+    // no need to sort enum
+//    this.allowedValues.sort(Comparator.naturalOrder());
   }
 
   public List<String> getAllowedValues() {

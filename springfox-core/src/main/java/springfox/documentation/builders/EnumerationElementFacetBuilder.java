@@ -6,11 +6,10 @@ import springfox.documentation.service.AllowableListValues;
 import springfox.documentation.service.AllowableValues;
 
 import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.LinkedHashSet;
 
 public class EnumerationElementFacetBuilder implements ElementFacetBuilder {
-  private final Set<String> allowedValues = new HashSet<>();
+  private final LinkedHashSet<String> allowedValues = new LinkedHashSet<>();
 
   public EnumerationElementFacetBuilder allowedValues(Collection<String> allowedValues) {
     this.allowedValues.addAll(allowedValues);
@@ -42,10 +41,10 @@ public class EnumerationElementFacetBuilder implements ElementFacetBuilder {
     return this.allowedValues(other.getAllowedValues());
   }
 
-  public static Set<String> from(AllowableValues allowableValues) {
+  public static LinkedHashSet<String> from(AllowableValues allowableValues) {
     if (allowableValues instanceof AllowableListValues) {
-      return new HashSet<>(((AllowableListValues) allowableValues).getValues());
+      return new LinkedHashSet<>(((AllowableListValues) allowableValues).getValues());
     }
-    return new HashSet<>();
+    return new LinkedHashSet<>();
   }
 }

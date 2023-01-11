@@ -99,7 +99,7 @@ class MultiProjectReleasePlugin implements Plugin<Project> {
     def publishTask = project.task('publishRelease', type: IntermediaryTask)
 
     publishTask.dependsOn checkWorkspaceTask
-    publishTask.dependsOn checkGitBranchTask
+//    publishTask.dependsOn checkGitBranchTask
 
     project.afterEvaluate { evaluatedProject ->
       def javaCheckTasks = evaluatedProject.getTasksByName('check', true)

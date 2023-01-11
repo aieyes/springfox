@@ -98,7 +98,7 @@ task createReleaseDocs(type: Exec, dependsOn: allDocs) {
 }
 
 task releaseDocs {
-  dependsOn createReleaseDocs, publishDocs
+  dependsOn createReleaseDocs
 }
 
 gitPublishPush.dependsOn allDocs

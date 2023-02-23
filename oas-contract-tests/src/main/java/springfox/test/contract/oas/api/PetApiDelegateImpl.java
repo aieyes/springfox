@@ -247,10 +247,10 @@ public class PetApiDelegateImpl implements PetApiDelegate {
       String name,
       String status) {
     Pet pet = petRepository.findById(petId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-    if (!StringUtils.isEmpty(name)) {
+    if (StringUtils.hasText(name)) {
       pet.name(name);
     }
-    if (!StringUtils.isEmpty(name)) {
+    if (StringUtils.hasText(name)) {
       pet.setStatus(Pet.StatusEnum.fromValue(status));
     }
     // return addPet(pet);

@@ -30,12 +30,7 @@ import io.swagger.models.Scheme;
 import io.swagger.models.Swagger;
 import io.swagger.models.Tag;
 import io.swagger.models.properties.Property;
-import org.mapstruct.BeforeMapping;
-import org.mapstruct.Context;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.MappingTarget;
-import org.mapstruct.Mappings;
+import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,7 +67,7 @@ import static springfox.documentation.builders.BuilderDefaults.*;
     SecurityMapper.class,
     LicenseMapper.class,
     VendorExtensionsMapper.class
-}, componentModel = "spring")
+}, componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public abstract class ServiceModelToSwagger2Mapper {
   private static final Logger LOGGER = getLogger(ServiceModelToSwagger2Mapper.class);
 

@@ -23,6 +23,7 @@ import io.swagger.models.Contact;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
+import org.mapstruct.ReportingPolicy;
 import springfox.documentation.service.ApiListingReference;
 import springfox.documentation.swagger1.dto.ApiDescription;
 import springfox.documentation.swagger1.dto.ApiInfo;
@@ -39,7 +40,7 @@ import springfox.documentation.swagger1.dto.ResponseMessage;
     AllowableValuesMapper.class,
     DataTypeMapper.class,
     AuthorizationTypesMapper.class
-})
+}, unmappedTargetPolicy = ReportingPolicy.IGNORE)
 @SuppressWarnings("deprecation")
 public interface ServiceModelToSwaggerMapper {
   //Api related

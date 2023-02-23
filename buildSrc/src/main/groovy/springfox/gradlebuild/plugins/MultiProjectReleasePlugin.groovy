@@ -126,7 +126,7 @@ class MultiProjectReleasePlugin implements Plugin<Project> {
   }
 
   static String buildNumberFormat(Project project) {
-    project.hasProperty('buildNumberFormat') ? project.property('buildNumberFormat') : '-SNAPSHOT'
+    project.hasProperty('buildNumberFormat') ? project.property('buildNumberFormat') : '-mod'
   }
 
   static boolean dryRun(Project project) {

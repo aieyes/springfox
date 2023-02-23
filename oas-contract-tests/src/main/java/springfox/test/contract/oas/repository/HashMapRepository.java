@@ -24,6 +24,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.NoRepositoryBean;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import java.util.ArrayList;
@@ -137,6 +138,17 @@ public abstract class HashMapRepository<T, ID> implements CrudRepository<T, ID> 
   public void deleteAll(Iterable<? extends T> entitiesToDelete) {
     Assert.notNull(entitiesToDelete, "entities cannot be null");
     entitiesToDelete.forEach(entity -> entities.remove(getEntityId(entity)));
+  }
+
+  @Override
+  @Transactional
+  public void deleteAllById(Iterable<? extends ID> ids) {
+
+    Assert.notNull(ids, "Ids must not be null!");
+
+    for (ID id : ids) {
+      deleteById(id);
+    }
   }
 
   @Override

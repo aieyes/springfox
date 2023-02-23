@@ -71,9 +71,9 @@ class FileVersionStrategy implements VersioningStrategy, GitTaggingSupport, GitV
 
   def updateVersionFile(project, buildInfo) {
     def nextVersion = buildInfo.nextVersion.asText();
-    if (!nextVersion.endsWith("-SNAPSHOT")) {
-      nextVersion += "-SNAPSHOT"
-    }
+//    if (!nextVersion.endsWith("-SNAPSHOT")) {
+//      nextVersion += "-SNAPSHOT"
+//    }
     if (buildInfo.dryRun) {
       project.logger.warn("[RELEASE] [DRYRUN] Would have saved $nextVersion " +
           "to the version file (${versionFile.absolutePath})")

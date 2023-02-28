@@ -123,11 +123,12 @@ public class DefaultModelNamesRegistryFactory implements ModelNamesRegistryFacto
             k -> modelIndex == 0 ? "" : "_" + modelIndex);
         index++;
       }
-      if (hasRequestResponsePair) {
-        requestResponseSuffixes.computeIfAbsent(
-            modelKey,
-            k -> k.isResponse() ? "Res" : "Req");
-      } else if (modelKey.getViewDiscriminator().isPresent()) {
+//      if (hasRequestResponsePair) {
+//        requestResponseSuffixes.computeIfAbsent(
+//            modelKey,
+//            k -> k.isResponse() ? "Res" : "Req");
+//      } else
+      if (modelKey.getViewDiscriminator().isPresent()) {
         requestResponseSuffixes.putIfAbsent(
             modelKey,
             modelKey.getViewDiscriminator().get().getErasedType().getSimpleName() + "View");
